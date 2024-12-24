@@ -105,17 +105,20 @@ function displayResults(results) {
   results.slice(0, 5).forEach((result, index) => {
     const confidence = (result.confidence * 100).toFixed(2);
     const predictionEl = document.createElement("div");
-    predictionEl.className = "prediction-item";
+    predictionEl.className = "prediction-item mb-4";
     predictionEl.innerHTML = `
-            <div class="label">${result.label}</div>
-            <div class="confidence">
-                <div class="confidence-bar" style="width: ${confidence}%"></div>
-                <span>${confidence}%</span>
-            </div>
-        `;
+      <div class="flex items-center mb-2">
+        <div class="label text-lg font-bold mr-4">${result.label}</div>
+        <div class="confidence flex items-center w-full">
+          <div class="confidence-bar bg-yellow-400 h-2 rounded-full" style="width: ${confidence}%"></div>
+          <span class="ml-4 text-sm text-gray-300">${confidence}%</span>
+        </div>
+      </div>
+    `;
     predictions.appendChild(predictionEl);
   });
 }
+
 
 
 // Reset the form
